@@ -1,5 +1,5 @@
 # dependencies
-/node_modules
+/invoice/node_modules
 /.pnp
 .pnp.js
 package-lock.json
