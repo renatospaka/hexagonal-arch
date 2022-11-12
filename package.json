@@ -1,0 +1,28 @@
+{
+  "name": "hexagonal-arch",
+  "version": "0.1.0",
+  "dependencies": {
+
+    "axios": "^0.27.2",
+    "express": "^4.18.1",
+    "jest": "^28.1.3",
+    "nodemon": "^2.0.19",
+    "pg-promise": "^10.11.1",
+    "tslint": "^6.1.3",
+    "typescript": "^4.7.4"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/jest": "^29.2.2",
+    "@swc/cli": "^0.1.57",
+    "@swc/core": "^1.2.218",
+    "@swc/jest": "^0.2.22",
+    "ts-node": "^10.9.1",
+    "ts-jest": "^29.0.3"
+  },
+  "scripts": {
+    "test": "npm run tsc -- --noEmit && jest",
+    "tsc": "tsc",
+    "start": "npm run start"
+  }
+}

@@ -1,0 +1,28 @@
+version: "3.5"
+
+services:
+  app:
+    build: .
+    container_name: hexagonal-arch
+    volumes:
+      - .:/home/node/app
+    ports:
+      - 3015:3000
+    extra_hosts:
+      - "host.docker.internal:172.17.0.1"
+    depends_on:
+      - db
+
+  db:
+    build: .docker/postgres
+    container_name: postgres_db
+    restart: always
+    tty: true
+    ports:
+      - 5433:5432
+    volumes:
+      - .docker/dbdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=development-password
+      - POSTGRES_DB=app
+      - POSTGRES_SCHEMA=app
