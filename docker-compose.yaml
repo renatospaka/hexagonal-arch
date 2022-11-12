@@ -3,7 +3,7 @@ version: "3.5"
 services:
   app:
     build: .
-    container_name: hexagonal-arch
+    container_name: hexagonal_arch
     volumes:
       - .:/home/node/app
     ports:
@@ -23,6 +23,6 @@ services:
     volumes:
       - .docker/dbdata:/var/lib/postgresql/data
     environment:
-      - POSTGRES_PASSWORD=development-password
-      - POSTGRES_DB=hexagonal-arch
-      - POSTGRES_SCHEMA=hexagonal-arch
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=hexagonal_arch
+      - POSTGRES_USER=app
