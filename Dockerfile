@@ -13,5 +13,5 @@ RUN npm install npm@9.1.1 --location=global && \
 USER node
 COPY . .
 
-# CMD ["tail", "-f", "/dev/null"]
-CMD ["sh", "-c", "npm install && tail -f /dev/null"]
+CMD ["tail", "-f", "/dev/null"]
+# CMD ["sh", "-c", "npm install && tail -f /dev/null"]

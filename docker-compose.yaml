@@ -15,7 +15,7 @@ services:
 
   db:
     build: .docker/postgres
-    container_name: postgres_db
+    container_name: hexagonal_arch_db
     restart: always
     tty: true
     ports:
