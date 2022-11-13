@@ -15,6 +15,8 @@ export default class CalculateInvoice {
     
     const invoices = new Invoice(transactions, currencies);
     const total = await invoices.getTotal();
-    return total;
+    return { 
+      total 
+    };
   }
 }

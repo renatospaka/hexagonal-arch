@@ -1,16 +1,11 @@
-import express from "express";
 import CalculateInvoice from "./CalculateInvoice";
+import HttpServerInterface from "./HttpServer";
 
 export default class InvoiceController {
-  constructor(readonly calculateInvoice: CalculateInvoice) {
-    const app = express();
-    app.get("/cards/:cardNumber/invoices", async function (req, res) {
-      const total = await calculateInvoice.execute(req.params.cardNumber);
-      res.json({ 
-        total: total 
-      });
+  constructor(readonly httpServer: HttpServerInterface, readonly calculateInvoice: CalculateInvoice) {
+    httpServer.register("get", "/cards/:cardNumber/invoices", async function (params: any, body: any) {
+      const total = await calculateInvoice.execute(params.cardNumber);
+      return total;
     });
-
-    app.listen(3000);
   }
 }
