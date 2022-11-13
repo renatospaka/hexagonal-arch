@@ -6,7 +6,7 @@ import TransactionDAODatabase from "./TransactionDAODatabase";
 const app = express();
 app.get("/cards/:cardNumber/invoices", async function (req, res) {
   const transactionDAO = new TransactionDAODatabase();
-  const currencyGateway = new CurrencyGatewayHttp();
+  const currencyGateway = new CurrencyGatewayHttp("http://app:3001");
   const calculateInvoice = new CalculateInvoice(transactionDAO, currencyGateway);
   const total = await calculateInvoice.execute(req.params.cardNumber);
   res.json({ 

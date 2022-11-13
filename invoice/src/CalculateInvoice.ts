@@ -1,4 +1,5 @@
 import CurrencyGatewayInterface from "./CurrencyGateway";
+import Invoice from "./Invoice";
 import TransactionDAOInterface from "./TransactionDAO";
 
 export default class CalculateInvoice {
@@ -10,17 +11,10 @@ export default class CalculateInvoice {
     const year = today.getFullYear();
   
     const currencies = await this.currencyGateway.getCurrencies();
-    const transactions =await this.transactionDAO.getTransactions(cardNumber, month, year);
-    let total = 0;
-    for (const transaction of transactions) {
-      if (transaction.currency === "BRL") {
-        total += parseFloat(transaction.amount);
-      }
-      if (transaction.currency === "USD") {
-        total += parseFloat(transaction.amount) * currencies.usd;
-      }
-    }
-
+    const transactions = await this.transactionDAO.getTransactions(cardNumber, month, year);
+    
+    const invoices = new Invoice(transactions, currencies);
+    const total = await invoices.getTotal();
     return total;
   }
 }
